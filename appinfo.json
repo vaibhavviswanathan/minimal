@@ -1,0 +1,40 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "vviswanathan@hmc.edu",
+    "longName": "Minimal",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "file": "fonts/impact.ttf",
+                "name": "impactfont_20",
+                "type": "font"
+            },
+            {
+                "file": "fonts/trek.ttf",
+                "name": "trekfont_20",
+                "type": "font"
+            },
+            {
+                "file": "images/bt_disconnected.png",
+                "name": "bt_disconnected",
+                "type": "png"
+            },
+            {
+                "file": "images/bt_connected.png",
+                "name": "bt_connected",
+                "type": "png"
+            }
+        ]
+    },
+    "shortName": "Minimal",
+    "uuid": "13bdec2c-d48c-47a9-9a80-6939cfc2e507",
+    "versionCode": 1,
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": true
+    }
+}
