@@ -9,6 +9,16 @@
     "resources": {
         "media": [
             {
+                "file": "fonts/gotham_light_34.ttf",
+                "name": "gotham_light_34",
+                "type": "font"
+            },
+            {
+                "file": "images/bt_blank.png",
+                "name": "bt_blank",
+                "type": "png"
+            },
+            {
                 "file": "fonts/impact.ttf",
                 "name": "impactfont_20",
                 "type": "font"

@@ -16,6 +16,7 @@ Window* window;
 TextLayer *text_layer, *battery_text_layer, *date_text_layer, *update_at_a_glance;
 InverterLayer *invert_layer;
 static GFont trek20;
+static GFont gotham34;
 
 GBitmap* bt_connected;
 BitmapLayer* bt_connected_layer;
@@ -29,7 +30,7 @@ int animationNumber = 0;
 
 //Define our variables for persistent storage
 static int num_animation = NUM_ANIMATION_PKEY;
-//This is an int and not a bool because I'll be adding more colourschemes
+
 
 static TextLayer* textLayerInit(GRect location, GColor colour, GColor background, const char *res_id, GTextAlignment alignment)
 {
@@ -216,7 +217,7 @@ void handle_bt(bool connected){
 		glance_this("Bluetooth disconnected", 1, 3, 5000);
   }
   	if(connected == 1){
-  	    bt_connected = gbitmap_create_with_resource(RESOURCE_ID_bt_connected);
+  	  bt_connected = gbitmap_create_with_resource(RESOURCE_ID_bt_blank);
 	    glance_this("Bluetooth connected", 1, 2, 3000);
   }
 	bitmap_layer_set_bitmap(bt_connected_layer,bt_connected);
@@ -224,11 +225,11 @@ void handle_bt(bool connected){
 
 
 void handle_battery(BatteryChargeState charge_state) {
-  static char battery_text[] = "100%";
+  static char battery_text[] = "";
 
   if (charge_state.is_charging) {
       snprintf(battery_text, sizeof(battery_text), "chg");
-    } else {
+    } else if(charge_state.charge_percent <= 30) {
         snprintf(battery_text, sizeof(battery_text), "%d%%", charge_state.charge_percent);
       }
   text_layer_set_text(battery_text_layer, battery_text);
@@ -238,16 +239,18 @@ void window_load(Window *window)
 {
   Layer *window_layer = window_get_root_layer(window);
   trek20 = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_impactfont_20));
+	gotham34 = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_gotham_light_34));
 
   //Bluetooth layer
   bt_connected = gbitmap_create_with_resource(RESOURCE_ID_bt_disconnected);
   bt_connected_layer = bitmap_layer_create(GRect(110,-5,40,40)); //old value of Y is 135
   bitmap_layer_set_background_color(bt_connected_layer,GColorClear);
-  layer_add_child(window_layer,bitmap_layer_get_layer(bt_connected_layer));
-
-  //Time layer
+	layer_add_child(window_layer,bitmap_layer_get_layer(bt_connected_layer));
+  
+	//Time layer
   //GRect location, GColor colour, GColor background, const char *res_id, GTextAlignment alignment
-  text_layer = textLayerInit(GRect(0, 53, 140, 168), GColorBlack, GColorClear, FONT_KEY_BITHAM_42_MEDIUM_NUMBERS, GTextAlignmentCenter);
+  text_layer = textLayerInit(GRect(0, 53, 140, 168), GColorBlack, GColorClear, FONT_KEY_BITHAM_42_LIGHT, GTextAlignmentCenter);
+	//text_layer_set_font(battery_text_layer,gotham34);
   layer_add_child(window_get_root_layer(window), (Layer*) text_layer);
 
   //Quick update text layer
@@ -256,11 +259,12 @@ void window_load(Window *window)
 
 
   //Date layer
-  date_text_layer = textLayerInit(GRect(25, 97, 140, 140), GColorBlack, GColorClear, FONT_KEY_ROBOTO_CONDENSED_21, GTextAlignmentCenter);
-  layer_add_child(window_layer, text_layer_get_layer(date_text_layer));
+  date_text_layer = textLayerInit(GRect(0, 97, 140, 168), GColorBlack, GColorClear, FONT_KEY_GOTHIC_18, GTextAlignmentCenter);
+  //text_layer_set_font(date_text_layer,trek20);
+	layer_add_child(window_layer, text_layer_get_layer(date_text_layer));
 
   //Battery text layer
-  battery_text_layer = textLayerInit(GRect(0, 5, 40, 40), GColorBlack, GColorClear, FONT_KEY_ROBOTO_CONDENSED_21, GTextAlignmentCenter); //old value of Y is 145	
+  battery_text_layer = textLayerInit(GRect(25, 5, 40, 40), GColorBlack, GColorClear, FONT_KEY_ROBOTO_CONDENSED_21, GTextAlignmentCenter); //old value of Y is 145	
   text_layer_set_font(battery_text_layer,trek20);
   layer_add_child(window_layer, text_layer_get_layer(battery_text_layer));
 
