@@ -231,7 +231,9 @@ void handle_battery(BatteryChargeState charge_state) {
       snprintf(battery_text, sizeof(battery_text), "chg");
     } else if(charge_state.charge_percent <= 30) {
         snprintf(battery_text, sizeof(battery_text), "%d%%", charge_state.charge_percent);
-      }
+      } else {
+				snprintf(battery_text, sizeof(battery_text), " ");
+	}
   text_layer_set_text(battery_text_layer, battery_text);
 }
 
@@ -299,6 +301,7 @@ void window_load(Window *window)
 void window_unload(Window *window)
 {
   //Destroy elements
+	glance_this("one", 1, 3, 5000);
   text_layer_destroy(text_layer);
   text_layer_destroy(date_text_layer);
   text_layer_destroy(battery_text_layer);
@@ -394,16 +397,14 @@ void deinit()
   persist_write_int(NUM_ANIMATION_PKEY, num_animation);
   animation_unschedule_all();
   tick_timer_service_unsubscribe();
-  battery_state_service_unsubscribe();
+ 	battery_state_service_unsubscribe();
   bluetooth_connection_service_unsubscribe();
-  gbitmap_destroy(bt_connected);
-  bitmap_layer_destroy(bt_connected_layer);
   window_destroy(window);                                               
 }
  
 int main(void)
 {
-  init();
-  app_event_loop();
+	init();
+	app_event_loop();
   deinit();
 }
