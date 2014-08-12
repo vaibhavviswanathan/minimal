@@ -217,7 +217,7 @@ void handle_bt(bool connected){
 		glance_this("Bluetooth disconnected", 1, 3, 5000);
   }
   	if(connected == 1){
-  	  bt_connected = gbitmap_create_with_resource(RESOURCE_ID_bt_blank);
+  	  bt_connected = gbitmap_create_with_resource(RESOURCE_ID_bt_connected);
 	    glance_this("Bluetooth connected", 1, 2, 3000);
   }
 	bitmap_layer_set_bitmap(bt_connected_layer,bt_connected);
@@ -244,10 +244,10 @@ void window_load(Window *window)
 	gotham34 = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_gotham_light_34));
 
   //Bluetooth layer
-  bt_connected = gbitmap_create_with_resource(RESOURCE_ID_bt_disconnected);
+	bt_connected = gbitmap_create_with_resource(RESOURCE_ID_bt_disconnected);
   bt_connected_layer = bitmap_layer_create(GRect(110,-5,40,40)); //old value of Y is 135
   bitmap_layer_set_background_color(bt_connected_layer,GColorClear);
-	layer_add_child(window_layer,bitmap_layer_get_layer(bt_connected_layer));
+	//layer_add_child(window_layer,bitmap_layer_get_layer(bt_connected_layer));
   
 	//Time layer
   //GRect location, GColor colour, GColor background, const char *res_id, GTextAlignment alignment

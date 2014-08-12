@@ -1,13 +1,84 @@
 {
     "appKeys": {},
     "capabilities": [
-        ""
+        "configurable"
     ],
     "companyName": "vviswanathan@hmc.edu",
     "longName": "Minimal",
     "projectType": "native",
     "resources": {
         "media": [
+            {
+                "file": "images/thunderstorm.png",
+                "name": "thunderstorm",
+                "type": "png"
+            },
+            {
+                "file": "images/snow.png",
+                "name": "snow",
+                "type": "png"
+            },
+            {
+                "file": "images/rain.png",
+                "name": "rain",
+                "type": "png"
+            },
+            {
+                "file": "images/none.png",
+                "name": "none",
+                "type": "png"
+            },
+            {
+                "file": "images/cloudy.png",
+                "name": "cloudy",
+                "type": "png"
+            },
+            {
+                "file": "images/clear_night.png",
+                "name": "clear_night",
+                "type": "png"
+            },
+            {
+                "file": "images/clear_day.png",
+                "name": "clear_day",
+                "type": "png"
+            },
+            {
+                "file": "images/bluetooth.png",
+                "name": "bluetooth",
+                "type": "png"
+            },
+            {
+                "file": "images/battery_empty.png",
+                "name": "battery_empty",
+                "type": "png"
+            },
+            {
+                "file": "images/battery_partial.png",
+                "name": "battery_partial",
+                "type": "png"
+            },
+            {
+                "file": "images/battery.png",
+                "name": "battery",
+                "type": "png"
+            },
+            {
+                "file": "images/atmosphere_night.png",
+                "name": "atmosphere_night",
+                "type": "png"
+            },
+            {
+                "file": "images/atmosphere.png",
+                "name": "atmosphere",
+                "type": "png"
+            },
+            {
+                "file": "images/menu_icon.png",
+                "menuIcon": true,
+                "name": "menu_icon",
+                "type": "png"
+            },
             {
                 "file": "fonts/gotham_light_34.ttf",
                 "name": "gotham_light_34",
