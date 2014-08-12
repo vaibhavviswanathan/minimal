@@ -9,7 +9,6 @@ Trek font taken from PebbleTrek by Kyle Potts: https://github.com/kylepotts/pebb
 */
 
 #include <pebble.h>
-#include "QTPlus.h"
 #define NUM_ANIMATION_PKEY 1
 #define NUM_ANIMATION_DEFAULT 1
 
@@ -397,7 +396,6 @@ void deinit()
   //Write the last animation to storage
   persist_write_int(NUM_ANIMATION_PKEY, num_animation);
   animation_unschedule_all();
-  qtp_app_deinit();
   tick_timer_service_unsubscribe();
  	battery_state_service_unsubscribe();
   bluetooth_connection_service_unsubscribe();
@@ -406,9 +404,7 @@ void deinit()
  
 int main(void)
 {
-	qtp_conf = QTP_K_SHOW_TIME | QTP_K_AUTOHIDE | QTP_K_INVERT;
 	init();
-	qtp_setup();
 	app_event_loop();
   deinit();
 }
