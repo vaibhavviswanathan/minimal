@@ -302,7 +302,6 @@ void window_load(Window *window)
 void window_unload(Window *window)
 {
   //Destroy elements
-	glance_this("one", 1, 3, 5000);
   text_layer_destroy(text_layer);
   text_layer_destroy(date_text_layer);
   text_layer_destroy(battery_text_layer);
