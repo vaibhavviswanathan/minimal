@@ -312,6 +312,8 @@ void window_unload(Window *window)
   inverter_layer_destroy(invert_layer);
   gbitmap_destroy(bt_connected);
 }
+
+// Beginning of quicktap plus functions
 void qtp_setup() {
 	qtp_is_showing = false;
 	accel_tap_service_subscribe(&qtp_tap_handler);
@@ -806,7 +808,7 @@ void deinit()
  
 int main(void)
 {
-	qtp_conf = QTP_K_SHOW_TIME | QTP_K_AUTOHIDE | QTP_K_INVERT | QTP_K_SHOW_WEATHER | QTP_K_DEGREES_F;
+	qtp_conf = QTP_K_SHOW_TIME | QTP_K_AUTOHIDE | QTP_K_INVERT | QTP_K_SHOW_WEATHER | QTP_K_DEGREES_F | QTP_K_SUBSCRIBE;
 	init();
 	qtp_setup();
 	app_event_loop();
