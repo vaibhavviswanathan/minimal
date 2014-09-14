@@ -23,7 +23,7 @@ GBitmap* bt_connected;
 BitmapLayer* bt_connected_layer;
 
 char timeBuffer[] = "00:00";
-char dateBuffer[] = "February 31";
+char dateBuffer[] = "September 31";
 
 bool booted = false;
 bool did58Animate = false;
@@ -267,7 +267,7 @@ void window_load(Window *window)
 	layer_add_child(window_layer, text_layer_get_layer(date_text_layer));
 
   //Battery text layer
-  battery_text_layer = textLayerInit(GRect(25, 5, 40, 40), GColorBlack, GColorClear, FONT_KEY_ROBOTO_CONDENSED_21, GTextAlignmentCenter); //old value of Y is 145	
+  battery_text_layer = textLayerInit(GRect(25, 5, 40, 40), GColorBlack, GColorClear, FONT_KEY_ROBOTO_CONDENSED_21, GTextAlignmentCenter); //old value of Y is 145
   text_layer_set_font(battery_text_layer,trek20);
   layer_add_child(window_layer, text_layer_get_layer(battery_text_layer));
 
@@ -515,7 +515,7 @@ void qtp_init() {
 		qtp_time_layer = text_layer_create(time_frame);
 		qtp_update_time(false);
 		text_layer_set_text_alignment(qtp_time_layer, GTextAlignmentCenter);
-		text_layer_set_font(qtp_time_layer, fonts_get_system_font(FONT_KEY_GOTHIC_28));
+		text_layer_set_font(qtp_time_layer, fonts_get_system_font(FONT_KEY_ROBOTO_CONDENSED_21));
 		layer_add_child(window_get_root_layer(qtp_window), text_layer_get_layer(qtp_time_layer));
 	}
 
@@ -525,7 +525,7 @@ void qtp_init() {
 		/* Weather description layer */
 		GRect desc_frame = GRect( QTP_PADDING_X + QTP_WEATHER_SIZE + 5, qtp_weather_y() + QTP_WEATHER_SIZE, QTP_SCREEN_WIDTH - QTP_PADDING_X, QTP_WEATHER_SIZE);
 		qtp_weather_desc_layer = text_layer_create(desc_frame);
-		text_layer_set_font(qtp_weather_desc_layer, fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
+		text_layer_set_font(qtp_weather_desc_layer, fonts_get_system_font(FONT_KEY_ROBOTO_CONDENSED_21));
 		text_layer_set_text_alignment(qtp_weather_desc_layer, GTextAlignmentLeft);
 		const Tuple *desc_tuple = app_sync_get(&qtp_sync, QTP_WEATHER_DESC_KEY);
 		if (desc_tuple != NULL) {
@@ -547,7 +547,7 @@ void qtp_init() {
 		if (temp_tuple != NULL) {
 			text_layer_set_text(qtp_temp_layer, temp_tuple->value->cstring);
 		}
-		text_layer_set_font(qtp_temp_layer, fonts_get_system_font(FONT_KEY_GOTHIC_28));
+		text_layer_set_font(qtp_temp_layer, fonts_get_system_font(FONT_KEY_ROBOTO_CONDENSED_21));
 		layer_add_child(window_get_root_layer(qtp_window), text_layer_get_layer(qtp_temp_layer));
 
 		/* Weather icon layer */
@@ -570,7 +570,7 @@ void qtp_init() {
 	/* Battery Status text layer */
 	GRect battery_frame = GRect( 40, qtp_battery_y(), QTP_SCREEN_WIDTH - QTP_BAT_ICON_SIZE, QTP_BAT_ICON_SIZE );
 	qtp_battery_text_layer =  text_layer_create(battery_frame);
-	text_layer_set_font(qtp_battery_text_layer, fonts_get_system_font(FONT_KEY_GOTHIC_28));
+	text_layer_set_font(qtp_battery_text_layer, fonts_get_system_font(FONT_KEY_ROBOTO_CONDENSED_21));
 	qtp_update_battery_status(false);
 	layer_add_child(window_get_root_layer(qtp_window), text_layer_get_layer(qtp_battery_text_layer));
 
@@ -586,7 +586,7 @@ void qtp_init() {
 
 	GRect bluetooth_frame = GRect(40,qtp_bluetooth_y(), QTP_SCREEN_WIDTH - QTP_BT_ICON_SIZE, QTP_BT_ICON_SIZE);
 	qtp_bluetooth_text_layer =  text_layer_create(bluetooth_frame);
-	text_layer_set_font(qtp_bluetooth_text_layer, fonts_get_system_font(FONT_KEY_GOTHIC_28));
+	text_layer_set_font(qtp_bluetooth_text_layer, fonts_get_system_font(FONT_KEY_ROBOTO_CONDENSED_21));
 	qtp_update_bluetooth_status(false);
 	layer_add_child(window_get_root_layer(qtp_window), text_layer_get_layer(qtp_bluetooth_text_layer));
 

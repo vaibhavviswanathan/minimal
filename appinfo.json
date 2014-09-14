@@ -10,6 +10,12 @@
     "resources": {
         "media": [
             {
+                "file": "images/menu_icon.png",
+                "menuIcon": true,
+                "name": "menu_icon",
+                "type": "png"
+            },
+            {
                 "file": "images/bt_connected.png",
                 "name": "bt_connected",
                 "type": "png"
@@ -38,12 +44,6 @@
                 "file": "fonts/gotham_light_34.ttf",
                 "name": "gotham_light_34",
                 "type": "font"
-            },
-            {
-                "file": "images/menu_icon.png",
-                "menuIcon": true,
-                "name": "menu_icon",
-                "type": "png"
             },
             {
                 "file": "images/atmosphere.png",
@@ -115,7 +115,7 @@
     "shortName": "Minimal",
     "uuid": "13bdec2c-d48c-47a9-9a80-6939cfc2e507",
     "versionCode": 1,
-    "versionLabel": "1.0",
+    "versionLabel": "2.2",
     "watchapp": {
         "watchface": true
     }
